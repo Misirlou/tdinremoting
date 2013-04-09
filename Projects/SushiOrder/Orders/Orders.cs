@@ -67,20 +67,29 @@ public class Orders : MarshalByRefObject, IOrders
 
     public void ModifyOrder(int num, OrderState state)
     {
-        
+        foreach (Order or in AOrders)
+        {
+            if (or.Nr == num)
+            {
+                or.Estado = state;
+                if (state == OrderState.Preparing)
+                {
+                    Payment(or);
+                }
+                NotifyClients(state, or); 
+                return;
+            }
+        }
     }
 
-    public void Payment(int nr)
+    public void Payment(Order or)
     {
-        foreach (Order or in AOrders)
-            if (or.Nr == nr)
-            {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter("pagamentos.txt", true))
+        using (System.IO.StreamWriter file = new System.IO.StreamWriter("pagamentos.txt", true))
                 {
                     Console.WriteLine("Writing to receipt file: {0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
                     file.WriteLine("{0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
                 }
-            }
+          
 
     }
 

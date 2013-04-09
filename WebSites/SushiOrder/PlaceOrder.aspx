@@ -11,6 +11,7 @@
     <script>
         function addFields() {
             $("#orderitems").innerHTML += '<div class="orderitem"><label>Type: <select><option>Aji</option><option>AmaEbi</option><option>Anago</option><option>Awabi </option><option>Ebi </option><option>Hamachi </option><option> Hirame </option><option>Hokkigai </option><option>Hotate </option><option>Ika </option><option>Ikura</option></select></label><label>Quantity: <input type="text /></label></div>';
+            return false;
         }
 
     </script>
@@ -45,7 +46,7 @@
                 <input type="text" /></label>
             </div>
         </div>
-        <input id="Button3" onclick="javascript: addFields()" value="Add" />
+        <input type="button" id="Button3" onclick="javascript: addFields()" value="Add" />
         <br />
     </form>
     <br />

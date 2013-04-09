@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PreparationService
 {
     public partial class PreparationServiceForm : Form
@@ -38,7 +39,8 @@ namespace PreparationService
         {
             if(this.button1.Text.Equals("Por em preparação")){
                 int num = (int)this.listBox1.SelectedValue;
-                lorders.ModifyOrder(num,OrderState.Preparing);
+              
+                lorders.ModifyOrder( num, OrderState.Preparing);
             }
             this.listBox1.DataSource = lorders.GetOrdersByState(OrderState.New);
             this.listBox1.DisplayMember = "DisplayMember";
