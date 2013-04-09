@@ -54,5 +54,6 @@ public interface IOrders
 
   void Add(string name, string credit,string address);
   void AddItem(string name, MenuItem type, int nr);
+  List<Order> GetOrdersByState(OrderState state);
   List<Order> GetOrders(string name);
 }

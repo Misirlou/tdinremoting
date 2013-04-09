@@ -1,0 +1,9 @@
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\bin\Release\PreparationService.exe.config
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\bin\Release\PreparationService.exe
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\bin\Release\PreparationService.pdb
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.csprojResolveAssemblyReference.cache
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.Form1.resources
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.Properties.Resources.resources
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.csproj.GenerateResource.Cache
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.exe
+C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\PreparationService\obj\Release\PreparationService.pdb

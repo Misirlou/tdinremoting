@@ -28,6 +28,16 @@ public class Orders : MarshalByRefObject, IOrders
         NotifyClients(OrderState.New, or);
     }
 
+    public List<Order> GetOrdersByState(OrderState state)
+    {
+        List<Order> result = new List<Order>();
+        foreach (Order or in AOrders)
+            if (or.Estado == state)
+                result.Add(or);
+        Console.WriteLine("[GetOrdersByState] called.");
+        return result;
+    }
+
     public List<Order> GetOrders(string name)
     {
         List<Order> result = new List<Order>();
