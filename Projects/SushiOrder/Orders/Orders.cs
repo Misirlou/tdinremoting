@@ -28,13 +28,26 @@ public class Orders : MarshalByRefObject, IOrders
         NotifyClients(OrderState.New, or);
     }
 
+    public void Add(string name, string credit, string address,List<MenuItem> states,List<int> nrs)
+    {
+        Order or = new Order(name, credit, address, nr);
+        AOrders.Add(or);
+        nr++;
+        Console.WriteLine("[Add] called.");
+        for (int i=0;i<states.Count;i++)
+        {
+            AddItem(or,states[i],nrs[i]);
+        }
+        NotifyClients(OrderState.New, or);
+    }
+
     public List<Order> GetOrdersByState(OrderState state)
     {
         List<Order> result = new List<Order>();
         foreach (Order or in AOrders)
             if (or.Estado == state)
             {
-                
+
                 result.Add(or);
             }
         Console.WriteLine("[GetOrdersByState] called.");
@@ -52,16 +65,11 @@ public class Orders : MarshalByRefObject, IOrders
         return result;
     }
 
-    public void AddItem(string name, MenuItem type, int nr)
+    public void AddItem(Order or, MenuItem type, int nr)
     {
 
-        Console.WriteLine("[AddOrderItem] called.");
-        foreach (Order or in AOrders)
-            if (or.Name == name)
-            {
-                or.Add(type, nr);
-                Console.WriteLine("[AddOrderItem] success");
-            }
+        or.Add(type, nr);
+        Console.WriteLine("[AddOrderItem] called");
 
     }
 
@@ -76,7 +84,7 @@ public class Orders : MarshalByRefObject, IOrders
                 {
                     Payment(or);
                 }
-                NotifyClients(state, or); 
+                NotifyClients(state, or);
                 return;
             }
         }
@@ -85,11 +93,11 @@ public class Orders : MarshalByRefObject, IOrders
     public void Payment(Order or)
     {
         using (System.IO.StreamWriter file = new System.IO.StreamWriter("pagamentos.txt", true))
-                {
-                    Console.WriteLine("Writing to receipt file: {0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
-                    file.WriteLine("{0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
-                }
-          
+        {
+            Console.WriteLine("Writing to receipt file: {0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
+            file.WriteLine("{0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
+        }
+
 
     }
 
