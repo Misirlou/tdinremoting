@@ -19,6 +19,13 @@ public partial class PlaceOrder : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        
+        if (true)
+        {
+
+
+
+            orderObj.Add(tbName.Text,tbCCN.Text,tbAddr.Text);
+
+        }
     }
 }
