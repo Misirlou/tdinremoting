@@ -94,7 +94,12 @@ namespace PreparationService
         {
             this.button1.Text = "Enviar para entrega";
         }
-    
+
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
+
     }
 }
 
