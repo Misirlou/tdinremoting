@@ -24,8 +24,11 @@ build/
 *.ilk
 *.meta
 *.obj
+<<<<<<< HEAD
 *.dll
 *.exe
+=======
+>>>>>>> 9bcb3f4d1e1239502d4e5a89298a57c433d866b1
 *.pch
 *.pdb
 *.pgc

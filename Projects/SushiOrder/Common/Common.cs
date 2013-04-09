@@ -57,3 +57,20 @@ public interface IOrders
   List<Order> GetOrdersByState(OrderState state);
   List<Order> GetOrders(string name);
 }
+
+
+public class AlterEventProxy : MarshalByRefObject
+{
+    public event AlterDelegate alterEvent;
+
+    public override object InitializeLifetimeService()
+    {
+        return null;
+    }
+
+    public void Repeater(OrderState op, Order or)
+    {
+        if (alterEvent != null)
+            alterEvent(op, or);
+    }
+}
