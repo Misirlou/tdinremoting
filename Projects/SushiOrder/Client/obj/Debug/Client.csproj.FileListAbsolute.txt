@@ -1,0 +1,8 @@
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\bin\Debug\Client.exe.config
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\bin\Debug\Client.exe
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\bin\Debug\Client.pdb
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\bin\Debug\Common.dll
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\bin\Debug\Common.pdb
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\obj\Debug\Client.exe
+c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Client\obj\Debug\Client.pdb
+C:\Users\apm\Documents\Visual Studio 2012\Projects\SushiOrder\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
