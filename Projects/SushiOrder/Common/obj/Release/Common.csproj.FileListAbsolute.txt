@@ -16,3 +16,4 @@ C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\Common\bin\Release\Commo
 C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
 C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\Common\obj\Release\Common.dll
 C:\Users\David Rego\Documents\sushi\Projects\SushiOrder\Common\obj\Release\Common.pdb
+C:\Users\Misirlou\Desktop\sushi\Projects\SushiOrder\Common\obj\Release\Common.csprojResolveAssemblyReference.cache

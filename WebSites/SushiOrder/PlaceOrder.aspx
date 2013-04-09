@@ -10,7 +10,8 @@
     <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
     <script>
         function addFields() {
-            $("#orderitems").innerHTML += '<div class="orderitem"><label>Type: <select><option>Aji</option><option>AmaEbi</option><option>Anago</option><option>Awabi </option><option>Ebi </option><option>Hamachi </option><option> Hirame </option><option>Hokkigai </option><option>Hotate </option><option>Ika </option><option>Ikura</option></select></label><label>Quantity: <input type="text /></label></div>';
+            $("#orderitems").innerHTML += $("#orderitem").innerHTML+"<br />";
+            //'<div class="orderitem"><label>Type: <select><option>Aji</option><option>AmaEbi</option><option>Anago</option><option>Awabi </option><option>Ebi </option><option>Hamachi </option><option> Hirame </option><option>Hokkigai </option><option>Hotate </option><option>Ika </option><option>Ikura</option></select></label><label>Quantity: <input type="text /></label></div>';
             return false;
         }
 
@@ -23,13 +24,15 @@
         <br />
         <br />
         <label>Name: <asp:TextBox id="tbName" runat="server" /></label><br />
-        <label>Credit Card Number: <asp:TextBox id="tbCCN" runat="server" /></label><br />
+        <label>Credit Card Number: <asp:TextBox id="tbCCN" runat="server" /></label>
+        <br />
         <label>Address: <asp:TextBox id="tbAddr" runat="server" /></label><br />
         <div id="orderitems">
+            
             <br />
             <div class="orderitem">
             <label>Type:
-                <select>
+               <!-- <select>
                     <option>Aji</option>
                     <option>AmaEbi</option>
                     <option>Anago</option>
@@ -42,8 +45,12 @@
                     <option>Ika </option>
                     <option>Ikura</option>
                 </select></label>
+                -->
+                <asp:DropDownList ID="ddl1" runat="server">
+                </asp:DropDownList>
             <label>Quantity:
                 <input type="text" /></label>
+          
             </div>
         </div>
         <input type="button" id="Button3" onclick="javascript: addFields()" value="Add" />

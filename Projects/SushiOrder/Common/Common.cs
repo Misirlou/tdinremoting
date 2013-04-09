@@ -57,6 +57,8 @@ public interface IOrders
   event AlterDelegate alterEvent;
 
   void Add(string name, string credit,string address);
+   void Add(string name, string credit, string address, List<MenuItem> items, List<int> nrs);
+    
   void AddItem(string name, MenuItem type, int nr);
   List<Order> GetOrdersByState(OrderState state);
   List<Order> GetOrders(string name);

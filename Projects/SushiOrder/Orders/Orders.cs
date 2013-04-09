@@ -28,15 +28,15 @@ public class Orders : MarshalByRefObject, IOrders
         NotifyClients(OrderState.New, or);
     }
 
-    public void Add(string name, string credit, string address,List<MenuItem> states,List<int> nrs)
+    public void Add(string name, string credit, string address,List<MenuItem> items,List<int> nrs)
     {
         Order or = new Order(name, credit, address, nr);
         AOrders.Add(or);
         nr++;
         Console.WriteLine("[Add] called.");
-        for (int i=0;i<states.Count;i++)
+        for (int i=0;i<items.Count;i++)
         {
-            AddItem(or,states[i],nrs[i]);
+            AddItem(or,items[i],nrs[i]);
         }
         NotifyClients(OrderState.New, or);
     }
@@ -72,6 +72,13 @@ public class Orders : MarshalByRefObject, IOrders
         Console.WriteLine("[AddOrderItem] called");
 
     }
+    public void AddItem(string s, MenuItem type, int nr)
+    {
+
+        Console.WriteLine("[AddOrderItem] called");
+
+    }
+
 
     public void ModifyOrder(int num, OrderState state)
     {
