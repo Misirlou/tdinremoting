@@ -14,8 +14,6 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
-*.exe
-*.dll
 
 
 # MSTest test Results
@@ -27,6 +25,8 @@ build/
 *.ilk
 *.meta
 *.obj
+*.dll
+*.exe
 *.pch
 *.pdb
 *.pgc
