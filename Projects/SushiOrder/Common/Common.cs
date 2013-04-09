@@ -10,6 +10,7 @@ public class Order {
     public string Address { get; set; }
     public List<OrderItem> produtos;
 	public OrderState Estado{get;set;}
+    public String DisplayMember { get; set; }
 
   public Order(string name, string CreditCard,string Address,int nr) {
     Name = name;
@@ -18,12 +19,15 @@ public class Order {
     produtos = new List<OrderItem>();
     Nr = nr;
 	Estado=OrderState.New;
+    DisplayMember = "Nr: " + Nr + " Name: " + Name;
   }
 
     public void Add(MenuItem name,int nr)
     {
         produtos.Add(new OrderItem(name, nr));
     }
+
+   
 
 }
 
@@ -56,6 +60,7 @@ public interface IOrders
   void AddItem(string name, MenuItem type, int nr);
   List<Order> GetOrdersByState(OrderState state);
   List<Order> GetOrders(string name);
+  void ModifyOrder(int num, OrderState state);
 }
 
 

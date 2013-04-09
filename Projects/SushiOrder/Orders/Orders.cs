@@ -33,7 +33,10 @@ public class Orders : MarshalByRefObject, IOrders
         List<Order> result = new List<Order>();
         foreach (Order or in AOrders)
             if (or.Estado == state)
+            {
+                
                 result.Add(or);
+            }
         Console.WriteLine("[GetOrdersByState] called.");
         return result;
     }
@@ -60,6 +63,11 @@ public class Orders : MarshalByRefObject, IOrders
                 Console.WriteLine("[AddOrderItem] success");
             }
 
+    }
+
+    public void ModifyOrder(int num, OrderState state)
+    {
+        
     }
 
     public void Payment(int nr)
