@@ -16,6 +16,8 @@ namespace PreparationService
     public partial class PreparationServiceForm : Form
     {
         IOrders lorders;
+        AlterEventProxy evproxy;
+
         public PreparationServiceForm()
         {
             InitializeComponent();
@@ -23,10 +25,41 @@ namespace PreparationService
             
             RemotingConfiguration.Configure("PreparationService.exe.config", false);
             lorders = (IOrders)RemoteNew.New(typeof(IOrders));
+            evproxy = new AlterEventProxy();
+            evproxy.alterEvent += new AlterDelegate(doAlterations);
+            lorders.alterEvent += new AlterDelegate(evproxy.Repeater);
 
             this.label1.Text = "Novas Encomendas";
             this.label2.Text = "Em Preparação";
             
+        }
+
+        public void doAlterations(OrderState state , Order or)
+        {
+            if (state == OrderState.New)
+            {
+
+                this.listBox1.DataSource = lorders.GetOrdersByState(OrderState.New);
+                this.listBox1.DisplayMember = "DisplayMember";
+                this.listBox1.ValueMember = "Nr";
+            }
+            else if(state == OrderState.Preparing)
+            {
+                this.listBox1.DataSource = lorders.GetOrdersByState(OrderState.New);
+                this.listBox1.DisplayMember = "DisplayMember";
+                this.listBox1.ValueMember = "Nr";
+
+                this.listBox2.DataSource = lorders.GetOrdersByState(OrderState.Preparing);
+                this.listBox2.DisplayMember = "DisplayMember";
+                this.listBox2.ValueMember = "Nr";
+            }
+            else if (state == OrderState.Ready)
+            {
+                this.listBox2.DataSource = lorders.GetOrdersByState(OrderState.Preparing);
+                this.listBox2.DisplayMember = "DisplayMember";
+                this.listBox2.ValueMember = "Nr";
+            }
+
         }
 
 
@@ -42,14 +75,24 @@ namespace PreparationService
               
                 lorders.ModifyOrder( num, OrderState.Preparing);
             }
-            this.listBox1.DataSource = lorders.GetOrdersByState(OrderState.New);
-            this.listBox1.DisplayMember = "DisplayMember";
-            this.listBox1.ValueMember = "Nr";
+            else if (this.button1.Text.Equals("Enviar para entrega"))
+            {
+
+                int num = (int)this.listBox1.SelectedValue;
+                lorders.ModifyOrder(num, OrderState.Ready);
+
+            }
+          
         }
 
         private void listBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             this.button1.Text = "Por em preparação";
+        }
+
+        private void listBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.button1.Text = "Enviar para entrega";
         }
     
     }
