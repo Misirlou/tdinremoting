@@ -56,3 +56,20 @@ public interface IOrders
   void AddItem(string name, MenuItem type, int nr);
   List<Order> GetOrders(string name);
 }
+
+
+public class AlterEventProxy : MarshalByRefObject
+{
+    public event AlterDelegate alterEvent;
+
+    public override object InitializeLifetimeService()
+    {
+        return null;
+    }
+
+    public void Repeater(OrderState op, Order or)
+    {
+        if (alterEvent != null)
+            alterEvent(op, or);
+    }
+}
