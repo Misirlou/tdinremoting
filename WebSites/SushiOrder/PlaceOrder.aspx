@@ -9,10 +9,18 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
     <script>
+        var id=1;
+
         function addFields() {
-            $("#orderitems").innerHTML += $("#orderitem").innerHTML+"<br />";
+            $("#orderitems").append( genhtml() + "<br />");
             //'<div class="orderitem"><label>Type: <select><option>Aji</option><option>AmaEbi</option><option>Anago</option><option>Awabi </option><option>Ebi </option><option>Hamachi </option><option> Hirame </option><option>Hokkigai </option><option>Hotate </option><option>Ika </option><option>Ikura</option></select></label><label>Quantity: <input type="text /></label></div>';
             return false;
+        }
+        function genhtml() {
+            var id2 = id + 1;
+            var str = $("#orderitem").html().replace(/asd[1-9]+/gi, 'asd' + id2);
+            id = id;
+            return str;
         }
 
     </script>
@@ -30,7 +38,7 @@
         <div id="orderitems">
             
             <br />
-            <div class="orderitem">
+            <div id="orderitem">
             <label>Type:
                <!-- <select>
                     <option>Aji</option>
@@ -46,10 +54,11 @@
                     <option>Ikura</option>
                 </select></label>
                 -->
-                <asp:DropDownList ID="ddl1" runat="server">
+                <asp:DropDownList ID="ddlasd1" runat="server">
                 </asp:DropDownList>
+            </label>
             <label>Quantity:
-                <input type="text" /></label>
+                <asp:TextBox id="tbquantasd1" runat="server" /></label>
           
             </div>
         </div>

@@ -19,11 +19,11 @@ public partial class PlaceOrder : System.Web.UI.Page
 
         Hashtable ht = GetEnumForBind(typeof(MenuItem));
 
-        ddl1.DataSource = ht;
-        ddl1.DataTextField = "value";
-        ddl1.DataValueField = "key";
-        ddl1.DataBind();
-        ddl1.SelectedValue = "0";
+        ddlasd1.DataSource = ht;
+        ddlasd1.DataTextField = "value";
+        ddlasd1.DataValueField = "key";
+        ddlasd1.DataBind();
+        ddlasd1.SelectedValue = "0";
         
     }
 
@@ -45,14 +45,20 @@ public partial class PlaceOrder : System.Web.UI.Page
         {
             List<MenuItem> items=new List<MenuItem>();
             List<int> nrs=new List<int>();
-            List<TextBox> nrstxt=(List<TextBox>)this.Page.Form.Controls.OfType<TextBox>();
-            int i=3;
+            
             foreach (DropDownList dr in this.Page.Form.Controls.OfType<DropDownList>())
             {
                 
                 items.Add((MenuItem)Enum.Parse(typeof(MenuItem),dr.SelectedItem.Text));
-                nrs.Add(int.Parse(nrstxt[i].Text));
-                i++;
+                
+                
+            }
+            foreach(TextBox nrstxt in this.Page.Form.Controls.OfType<TextBox>())
+            {
+                if (nrstxt.ID.StartsWith("tbquant"))
+                {
+                    nrs.Add(int.Parse(nrstxt.Text));
+                }
             }
 
             
