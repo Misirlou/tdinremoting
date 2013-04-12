@@ -9,19 +9,15 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
     <script>
-        var id=1;
+        var id = 1;
 
         function addFields() {
-            $("#orderitems").append( genhtml() + "<br />");
+            id++;
+            $("#orderitem" + id).show();
             //'<div class="orderitem"><label>Type: <select><option>Aji</option><option>AmaEbi</option><option>Anago</option><option>Awabi </option><option>Ebi </option><option>Hamachi </option><option> Hirame </option><option>Hokkigai </option><option>Hotate </option><option>Ika </option><option>Ikura</option></select></label><label>Quantity: <input type="text /></label></div>';
             return false;
         }
-        function genhtml() {
-            var id2 = id + 1;
-            var str = $("#orderitem").html().replace(/asd[1-9]+/gi, 'asd' + id2);
-            id = id;
-            return str;
-        }
+
 
     </script>
 </head>
@@ -31,36 +27,86 @@
         <asp:Button ID="Button2" runat="server" Text="Place Order" OnClick="Button2_Click" />
         <br />
         <br />
-        <label>Name: <asp:TextBox id="tbName" runat="server" /></label><br />
-        <label>Credit Card Number: <asp:TextBox id="tbCCN" runat="server" /></label>
+        <label>
+            Name:
+            <asp:TextBox ID="tbName" runat="server" /></label><br />
+        <label>
+            Credit Card Number:
+            <asp:TextBox ID="tbCCN" runat="server" /></label>
         <br />
-        <label>Address: <asp:TextBox id="tbAddr" runat="server" /></label><br />
+        <label>
+            Address:
+            <asp:TextBox ID="tbAddr" runat="server" /></label><br />
         <div id="orderitems">
-            
+
             <br />
-            <div id="orderitem">
-            <label>Type:
-               <!-- <select>
-                    <option>Aji</option>
-                    <option>AmaEbi</option>
-                    <option>Anago</option>
-                    <option>Awabi </option>
-                    <option>Ebi </option>
-                    <option>Hamachi </option>
-                    <option>Hirame </option>
-                    <option>Hokkigai </option>
-                    <option>Hotate </option>
-                    <option>Ika </option>
-                    <option>Ikura</option>
-                </select></label>
-                -->
-                <asp:DropDownList ID="ddlasd1" runat="server">
+            <div id="orderitem1">
+
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl1" runat="server">
                 </asp:DropDownList>
-            </label>
-            <label>Quantity:
-                <asp:TextBox id="tbquantasd1" runat="server" /></label>
-          
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant1" runat="server" /></label>
             </div>
+            <div id="orderitem2" style="display: none">
+                <br />
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl2" runat="server">
+                </asp:DropDownList>
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant2" runat="server" /></label>
+            </div>
+            <div id="orderitem3" style="display: none">
+                <br />
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl3" runat="server">
+                </asp:DropDownList>
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant3" runat="server" /></label>
+            </div>
+            <div id="orderitem4" style="display: none">
+                <br />
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl4" runat="server">
+                </asp:DropDownList>
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant4" runat="server" /></label>
+            </div>
+            <div id="orderitem5" style="display: none">
+                <br />
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl5" runat="server">
+                </asp:DropDownList>
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant5" runat="server" /></label>
+            </div>
+            <div id="orderitem6" style="display: none">
+                <br />
+                <label>
+                    Type:
+                <asp:DropDownList ID="ddl6" runat="server">
+                </asp:DropDownList>
+                </label>
+                <label>
+                    Quantity:
+                <asp:TextBox ID="tbquant6" runat="server" /></label>
+            </div>
+
         </div>
         <input type="button" id="Button3" onclick="javascript: addFields()" value="Add" />
         <br />

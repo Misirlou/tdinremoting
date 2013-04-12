@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
   {
       List<Order> ls;
 
-      ls = orderObj.GetOrders("pete");
+      ls = orderObj.GetOrders(tbnome.Text);
       GridView1.DataSource = ls;
       GridView1.DataBind();
       GridView1.Visible = true;

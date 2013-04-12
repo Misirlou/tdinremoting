@@ -9,6 +9,7 @@
 <body>
     <h1>Check Orders</h1>
     <form id="form1" runat="server">
+      <label>Nome: <asp:TextBox runat="server" id="tbnome">nome</asp:TextBox></label>
       <asp:Button ID="Button1" runat="server" Text="GetOrders" OnClick="Button1_Click" />
       <br />
       <br />

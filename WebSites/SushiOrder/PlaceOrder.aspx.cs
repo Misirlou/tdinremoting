@@ -16,15 +16,46 @@ public partial class PlaceOrder : System.Web.UI.Page
         
         string address = ConfigurationManager.AppSettings["RemoteAddress"];
         orderObj = (IOrders)Activator.GetObject(typeof(IOrders), address);
+        if (!IsPostBack)
+        {
+            Hashtable ht = GetEnumForBind(typeof(MenuItem));
 
-        Hashtable ht = GetEnumForBind(typeof(MenuItem));
+            ddl1.DataSource = ht;
+            ddl1.DataTextField = "value";
+            ddl1.DataValueField = "key";
+            ddl1.DataBind();
+            ddl1.SelectedIndex = 0;
 
-        ddlasd1.DataSource = ht;
-        ddlasd1.DataTextField = "value";
-        ddlasd1.DataValueField = "key";
-        ddlasd1.DataBind();
-        ddlasd1.SelectedValue = "0";
-        
+            ddl2.DataSource = ht;
+            ddl2.DataTextField = "value";
+            ddl2.DataValueField = "key";
+            ddl2.DataBind();
+            ddl2.SelectedIndex = 0;
+
+            ddl3.DataSource = ht;
+            ddl3.DataTextField = "value";
+            ddl3.DataValueField = "key";
+            ddl3.DataBind();
+            ddl3.SelectedIndex = 0;
+
+            ddl4.DataSource = ht;
+            ddl4.DataTextField = "value";
+            ddl4.DataValueField = "key";
+            ddl4.DataBind();
+            ddl4.SelectedIndex = 0;
+
+            ddl5.DataSource = ht;
+            ddl5.DataTextField = "value";
+            ddl5.DataValueField = "key";
+            ddl5.DataBind();
+            ddl5.SelectedIndex = 0;
+
+            ddl6.DataSource = ht;
+            ddl6.DataTextField = "value";
+            ddl6.DataValueField = "key";
+            ddl6.DataBind();
+            ddl6.SelectedIndex = 0;
+        }
     }
 
     public Hashtable GetEnumForBind(Type enumeration)
@@ -49,7 +80,7 @@ public partial class PlaceOrder : System.Web.UI.Page
             foreach (DropDownList dr in this.Page.Form.Controls.OfType<DropDownList>())
             {
                 
-                items.Add((MenuItem)Enum.Parse(typeof(MenuItem),dr.SelectedItem.Text));
+                items.Add((MenuItem)Enum.Parse(typeof(MenuItem),dr.SelectedValue));
                 
                 
             }
@@ -57,7 +88,14 @@ public partial class PlaceOrder : System.Web.UI.Page
             {
                 if (nrstxt.ID.StartsWith("tbquant"))
                 {
-                    nrs.Add(int.Parse(nrstxt.Text));
+                    try
+                    {
+                        nrs.Add(int.Parse(nrstxt.Text));
+                    }
+                    catch (Exception exc)
+                    {
+                        items.RemoveAt(nrs.Count);
+                    }
                 }
             }
 
