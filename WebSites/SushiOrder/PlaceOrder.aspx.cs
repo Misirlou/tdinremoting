@@ -101,6 +101,8 @@ public partial class PlaceOrder : System.Web.UI.Page
 
             
             orderObj.Add(tbName.Text, tbCCN.Text, tbAddr.Text,items,nrs);
+            Response.Redirect("Default.aspx");
+
         }
     }
 }
