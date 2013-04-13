@@ -77,6 +77,7 @@ public class Orders : MarshalByRefObject, IOrders
 
     public void ModifyOrder(int num, OrderState state)
     {
+        if (state == OrderState.Delivering) return; //erro, deve usar o metodo com nome da equipa
         foreach (Order or in AOrders)
         {
             if (or.Nr == num)
@@ -120,6 +121,36 @@ public class Orders : MarshalByRefObject, IOrders
                 {
                     alterEvent -= handler;
                 }
+            }
+        }
+    }
+
+
+    public List<Order> GetOrdersByState(OrderState state, string equipa)
+    {
+        List<Order> result = new List<Order>();
+        foreach (Order or in AOrders)
+            if (or.Estado == state && or.DeliveryTeam.Equals(equipa))
+            {
+
+                result.Add(or);
+            }
+        Console.WriteLine("[GetOrdersByState(Team)] called.");
+        return result;
+    }
+
+    public void ModifyOrder(int num, OrderState state, string equipa)
+    {
+        if (state != OrderState.Delivering) return; //erro, deve usar o metodo sem nome da equipa
+        foreach (Order or in AOrders)
+        {
+            if (or.Nr == num)
+            {
+                or.Estado = state;
+                or.DeliveryTeam = equipa;
+               
+                NotifyClients(state, or);
+                return;
             }
         }
     }

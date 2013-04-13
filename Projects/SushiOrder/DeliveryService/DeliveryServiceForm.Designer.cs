@@ -1,6 +1,6 @@
-﻿namespace PreparationService
+﻿namespace DeliveryService
 {
-    partial class PreparationServiceForm
+    partial class DeliveryServiceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -102,8 +102,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
-            this.Name = "PreparationServiceForm";
-            this.Text = "Preparation Service";
+            this.Name = "DeliveryServiceForm";
+            this.Text = "Delivery Service";
             this.ResumeLayout(false);
             this.PerformLayout();
 
