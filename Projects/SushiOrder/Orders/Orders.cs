@@ -19,14 +19,14 @@ public class Orders : MarshalByRefObject, IOrders
         Console.WriteLine("[Orders] built.");
     }
 
-    public void Add(string name, string credit, string address)
+    /*public void Add(string name, string credit, string address)
     {
         Order or = new Order(name, credit, address, nr);
         AOrders.Add(or);
         nr++;
         Console.WriteLine("[Add] called.");
-        NotifyClients(OrderState.New, or);
-    }
+        //NotifyClients(OrderState.New, or);
+    }*/
 
     public void Add(string name, string credit, string address,List<MenuItem> items,List<int> nrs)
     {
@@ -65,19 +65,14 @@ public class Orders : MarshalByRefObject, IOrders
         return result;
     }
 
-    public void AddItem(Order or, MenuItem type, int nr)
+    private void AddItem(Order or, MenuItem type, int nr)
     {
 
         or.Add(type, nr);
         Console.WriteLine("[AddOrderItem] called");
 
     }
-    public void AddItem(string s, MenuItem type, int nr)
-    {
 
-        Console.WriteLine("[AddOrderItem] called");
-
-    }
 
 
     public void ModifyOrder(int num, OrderState state)

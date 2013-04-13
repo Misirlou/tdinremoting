@@ -56,10 +56,10 @@ public interface IOrders
 {
   event AlterDelegate alterEvent;
 
-  void Add(string name, string credit,string address);
-   void Add(string name, string credit, string address, List<MenuItem> items, List<int> nrs);
+  //void Add(string name, string credit,string address);//deprecated
+  void Add(string name, string credit, string address, List<MenuItem> items, List<int> nrs);
     
-  void AddItem(string name, MenuItem type, int nr);
+  //void AddItem(string name, MenuItem type, int nr);//deprecated
   List<Order> GetOrdersByState(OrderState state);
   List<Order> GetOrders(string name);
   void ModifyOrder(int num, OrderState state);

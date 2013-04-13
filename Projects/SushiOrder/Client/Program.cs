@@ -13,17 +13,21 @@ class Program {
     
     RemotingConfiguration.Configure("Client.exe.config", false);
     lorders = (IOrders)RemoteNew.New(typeof(IOrders));
-    lorders.Add("pete", "11231313", "rua x");
+   // lorders.Add("pete", "11231313", "rua x");
     ls = lorders.GetOrders("pete");
     foreach (Order o in ls)
         Console.WriteLine("{0}, {1}, {2}, {3}", o.Name, o.CreditCard,o.Nr,o.produtos.Count);
     Console.ReadLine();
 
-    lorders.AddItem("pete", MenuItem.Aji, 2);
+   // lorders.AddItem("pete", MenuItem.Aji, 2);
     ls = lorders.GetOrders("pete");
     foreach (Order o in ls)
     {
         Console.WriteLine("{0}, {1}, {2}, {3}", o.Name, o.CreditCard, o.Nr, o.produtos.Count);
+        foreach (OrderItem oi in o.produtos)
+        {
+            Console.WriteLine("{0}, {1}", oi.Type,oi.Nr);
+        }
         
     }
    Console.ReadLine();
