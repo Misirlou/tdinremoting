@@ -67,14 +67,11 @@ public class Orders : MarshalByRefObject, IOrders
 
     public void Add(string name, string credit, string address, List<MenuItem> items, List<int> nrs)
     {
-        Order or = new Order(name, credit, address, nr);
+        Order or = new Order(name, credit, address, nr,items,nrs);
         AOrders.Add(or);
         nr++;
         Console.WriteLine("[Add] called.");
-        for (int i = 0; i < items.Count; i++)
-        {
-            AddItem(or, items[i], nrs[i]);
-        }
+        
         NotifyClients(OrderState.New, or);
     }
 

@@ -110,7 +110,15 @@
         <br />
         <br />
         <asp:Button ID="Button2" runat="server" Text="Encomendar" OnClick="Button2_Click" />
+        <asp:Panel ID="confirmPreco" runat="server"
+    Visible="False">
+    <p><asp:Label ID="labelpreco" runat="server"></asp:Label><br />
+    <asp:Button ID="btSim" runat="server" OnClick="btPreco_Click" Text="Sim" />
+    <asp:Button ID="btNao" runat="server" OnClick="btPreco_Click" Text="Não" />
+    </p>
+</asp:Panel>
     </form>
+    
     <br />
     <a href="Default.aspx">Voltar</a>
 </body>

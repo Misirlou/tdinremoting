@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 public partial class PlaceOrder : System.Web.UI.Page
 {
     IOrders orderObj;
+    Order ord;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -92,7 +93,7 @@ public partial class PlaceOrder : System.Web.UI.Page
                     {
                         nrs.Add(int.Parse(nrstxt.Text));
                     }
-                    catch (Exception exc)
+                    catch 
                     {
                         items.RemoveAt(nrs.Count);
                     }
@@ -100,9 +101,47 @@ public partial class PlaceOrder : System.Web.UI.Page
             }
 
             
-            orderObj.Add(tbName.Text, tbCCN.Text, tbAddr.Text,items,nrs);
+            ord= new Order(tbName.Text, tbCCN.Text, tbAddr.Text,0,items,nrs);
+            
+            labelpreco.Text = ord.price.ToString();
+            confirmPreco.Visible = true;
+        }
+    }
+    protected void btPreco_Click(object sender, EventArgs e)
+    {
+        Button bt = (Button)sender;
+        if (bt.ID.Equals("btSim"))
+        {
+            List<MenuItem> items = new List<MenuItem>();
+            List<int> nrs = new List<int>();
+
+            foreach (DropDownList dr in this.Page.Form.Controls.OfType<DropDownList>())
+            {
+
+                items.Add((MenuItem)Enum.Parse(typeof(MenuItem), dr.SelectedValue));
+
+
+            }
+            foreach (TextBox nrstxt in this.Page.Form.Controls.OfType<TextBox>())
+            {
+                if (nrstxt.ID.StartsWith("tbquant"))
+                {
+                    try
+                    {
+                        nrs.Add(int.Parse(nrstxt.Text));
+                    }
+                    catch
+                    {
+                        items.RemoveAt(nrs.Count);
+                    }
+                }
+            }
+
+
+            orderObj.Add(tbName.Text, tbCCN.Text, tbAddr.Text, items, nrs);
             Response.Redirect("Default.aspx");
 
         }
+        confirmPreco.Visible = false;
     }
 }

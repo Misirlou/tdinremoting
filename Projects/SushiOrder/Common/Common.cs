@@ -28,12 +28,29 @@ public class Order
         DisplayMember = "Nr: " + Nr + " Name: " + Name;
     }
 
+    public Order(string name, string CreditCard, string Address, int nr, List<MenuItem> items, List<int> nrs)
+    {
+        Name = name;
+        price = 0;
+        this.CreditCard = CreditCard;
+        this.Address = Address;
+        produtos = new List<OrderItem>();
+        Nr = nr;
+        DeliveryTeam = "";
+        Estado = OrderState.New;
+        DisplayMember = "Nr: " + Nr + " Name: " + Name;
+        for (int i = 0; i < items.Count; i++)
+        {
+            Add(items[i], nrs[i]);
+        }
+    }
+
     public void Add(MenuItem name, int nr)
     {
         produtos.Add(new OrderItem(name, nr));
         switch (name)
         {
-            case MenuItem.Aji: price+=1.5*nr;break;
+            case MenuItem.Aji: price += 1.5 * nr; break;
             case MenuItem.AmaEbi: price += 2 * nr; break;
             case MenuItem.Anago: price += 1.5 * nr; break;
             case MenuItem.Awabi: price += 0.5 * nr; break;
@@ -43,7 +60,7 @@ public class Order
             case MenuItem.Hokkigai: price += 2 * nr; break;
             case MenuItem.Hotate: price += 1 * nr; break;
             case MenuItem.Ika: price += 1.5 * nr; break;
-            case MenuItem.Ikura: price += 3 * nr; break; 
+            case MenuItem.Ikura: price += 3 * nr; break;
         }
     }
 
