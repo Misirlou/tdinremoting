@@ -1,5 +1,0 @@
-c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Common\bin\Debug\Common.dll
-c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Common\bin\Debug\Common.pdb
-c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Common\obj\Debug\Common.dll
-c:\users\apm\documents\visual studio 2012\Projects\SushiOrder\Common\obj\Debug\Common.pdb
-C:\Users\apm\Documents\Visual Studio 2012\Projects\SushiOrder\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
