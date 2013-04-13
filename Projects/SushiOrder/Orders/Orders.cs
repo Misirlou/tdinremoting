@@ -15,10 +15,11 @@ public class Orders : MarshalByRefObject, IOrders
 
     public Orders()
     {
-        AOrders = new List<Order>();
+
         nr = (System.DateTime.Now.Month * 100 + System.DateTime.Now.Day) * 1000; //suporta ate 1000 ordens por dia com nr unico
-        using (Stream stream = File.Open("ordersstate.bin", FileMode.Open))
+        try
         {
+            Stream stream = File.Open("ordersstate.bin", FileMode.Open);
             BinaryFormatter bin = new BinaryFormatter();
 
             AOrders = (List<Order>)bin.Deserialize(stream);
@@ -33,22 +34,28 @@ public class Orders : MarshalByRefObject, IOrders
                 }
                 Console.WriteLine(str);
             }
+
         }
+        catch
+        {
+            AOrders = new List<Order>();
+        }
+
 
         Console.WriteLine("[Orders] built.");
     }
 
-     ~Orders()
+    ~Orders()
     {
         using (Stream stream = File.Open("ordersstate.bin", FileMode.Create))
         {
-            
+
             BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(stream,AOrders);
+            serializer.Serialize(stream, AOrders);
         }
 
     }
-    
+
     /*public void Add(string name, string credit, string address)
     {
         Order or = new Order(name, credit, address, nr);
@@ -58,15 +65,15 @@ public class Orders : MarshalByRefObject, IOrders
         //NotifyClients(OrderState.New, or);
     }*/
 
-    public void Add(string name, string credit, string address,List<MenuItem> items,List<int> nrs)
+    public void Add(string name, string credit, string address, List<MenuItem> items, List<int> nrs)
     {
         Order or = new Order(name, credit, address, nr);
         AOrders.Add(or);
         nr++;
         Console.WriteLine("[Add] called.");
-        for (int i=0;i<items.Count;i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            AddItem(or,items[i],nrs[i]);
+            AddItem(or, items[i], nrs[i]);
         }
         NotifyClients(OrderState.New, or);
     }
@@ -89,7 +96,7 @@ public class Orders : MarshalByRefObject, IOrders
         List<Order> result = new List<Order>();
 
         foreach (Order or in AOrders)
-            if (or.Name == name)
+            if (or.Name == name && or.Estado!=OrderState.Completed)
                 result.Add(or);
         Console.WriteLine("[GetOrders] called.");
         return result;
@@ -127,8 +134,8 @@ public class Orders : MarshalByRefObject, IOrders
     {
         using (System.IO.StreamWriter file = new System.IO.StreamWriter("pagamentos.txt", true))
         {
-            Console.WriteLine("Writing to receipt file: {0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
-            file.WriteLine("{0}, {1}, {2}, {3}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard);
+            Console.WriteLine("Writing to receipt file: {0}, {1}, {2}, {3}, {4}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard, or.price);
+            file.WriteLine("{0}, {1}, {2}, {3}, {4}", or.Nr, System.DateTime.Now.ToString(), or.Name, or.CreditCard, or.price);
         }
 
 
@@ -178,7 +185,7 @@ public class Orders : MarshalByRefObject, IOrders
             {
                 or.Estado = state;
                 or.DeliveryTeam = equipa;
-               
+
                 NotifyClients(state, or);
                 return;
             }
