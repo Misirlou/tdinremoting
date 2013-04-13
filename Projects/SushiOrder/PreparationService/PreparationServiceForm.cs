@@ -132,14 +132,15 @@ namespace PreparationService
 
         private void updateTextBox(Order o)
         {
-
-            string str = "";
-            str += "Nr: " + o.Nr.ToString() + "\r\nNome: " + o.Name + "\r\nMorada: " + o.Address + "\r\nNumero cartao: " + o.CreditCard + "\r\nEstado: " + Enum.GetName(typeof(OrderState), o.Estado)+"\r\n";
-            foreach (OrderItem oi in o.produtos)
-            {
-                str += "\r\n" + Enum.GetName(typeof(MenuItem), oi.Type) + ": " + oi.Nr.ToString();
+            if(o != null){
+                string str = "";
+                str += "Nr: " + o.Nr.ToString() + "\r\nNome: " + o.Name + "\r\nMorada: " + o.Address + "\r\nNumero cartao: " + o.CreditCard + "\r\nEstado: " + Enum.GetName(typeof(OrderState), o.Estado)+"\r\n";
+                foreach (OrderItem oi in o.produtos)
+                {
+                    str += "\r\n" + Enum.GetName(typeof(MenuItem), oi.Type) + ": " + oi.Nr.ToString();
+                }
+                this.textBox1.Text = str;
             }
-            this.textBox1.Text = str;
         }
 
         public override object InitializeLifetimeService()
