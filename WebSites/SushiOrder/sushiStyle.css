@@ -1,0 +1,37 @@
+﻿body {
+
+    width: 800px;
+    margin:auto;
+}
+
+#header {
+
+    text-align:center;
+    background-color: #0066CC;
+    padding: 15px;
+    color:white;
+}
+
+#place, #check {
+
+    padding-top: 20px;
+    background-color:#E0E0E0;
+}
+
+table#GridView1{   
+    margin-left:auto; 
+    margin-right:auto;
+  
+}
+
+table#GridView2{   
+    margin-left:auto; 
+    margin-right:auto;
+  
+}
+
+
+label{
+    
+    clear: left;
+}
