@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Orders : MarshalByRefObject, IOrders
 {
@@ -15,10 +17,38 @@ public class Orders : MarshalByRefObject, IOrders
     {
         AOrders = new List<Order>();
         nr = (System.DateTime.Now.Month * 100 + System.DateTime.Now.Day) * 1000; //suporta ate 1000 ordens por dia com nr unico
+        using (Stream stream = File.Open("ordersstate.bin", FileMode.Open))
+        {
+            BinaryFormatter bin = new BinaryFormatter();
+
+            AOrders = (List<Order>)bin.Deserialize(stream);
+            foreach (Order o in AOrders)
+            {
+                string str = "";
+                str += o.Nr.ToString() + " " + o.Name + " " + o.Address + " " + o.CreditCard + " " + Enum.GetName(typeof(OrderState), o.Estado) + " ";
+                if (o.Nr > nr) nr = o.Nr + 1;
+                foreach (OrderItem oi in o.produtos)
+                {
+                    str += "\\" + Enum.GetName(typeof(MenuItem), oi.Type) + " " + oi.Nr.ToString();
+                }
+                Console.WriteLine(str);
+            }
+        }
 
         Console.WriteLine("[Orders] built.");
     }
 
+     ~Orders()
+    {
+        using (Stream stream = File.Open("ordersstate.bin", FileMode.Create))
+        {
+            
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(stream,AOrders);
+        }
+
+    }
+    
     /*public void Add(string name, string credit, string address)
     {
         Order or = new Order(name, credit, address, nr);
