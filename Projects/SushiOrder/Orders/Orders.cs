@@ -45,6 +45,11 @@ public class Orders : MarshalByRefObject, IOrders
         Console.WriteLine("[Orders] built.");
     }
 
+    public override object InitializeLifetimeService()
+    {
+        return null;
+    }
+
     ~Orders()
     {
         using (Stream stream = File.Open("ordersstate.bin", FileMode.Create))

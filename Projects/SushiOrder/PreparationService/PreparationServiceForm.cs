@@ -37,6 +37,11 @@ namespace PreparationService
             UpdatePreparing();
         }
 
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
+
         public void doAlterations(OrderState state, Order or)
         {
             switch (state)
@@ -46,8 +51,7 @@ namespace PreparationService
                 case OrderState.Ready: UpdateReady(); break;
             }
 
-            if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
-                this.button1.Text = "Sem Encomendas";
+            
         }
 
 
@@ -62,6 +66,8 @@ namespace PreparationService
                 this.listBox1.ValueMember = "Nr";
 
                 if (this.listBox1.SelectedValue == null && this.listBox2.SelectedValue == null) this.textBox1.Text = "";
+                if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
+                    this.button1.Text = "Sem Encomendas";
             }
         }
 
@@ -81,6 +87,8 @@ namespace PreparationService
                 this.listBox2.ValueMember = "Nr";
 
                 if (this.listBox1.SelectedValue == null && this.listBox2.SelectedValue == null) this.textBox1.Text = "";
+                if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
+                    this.button1.Text = "Sem Encomendas";
             }
         }
 
@@ -95,6 +103,8 @@ namespace PreparationService
                 this.listBox2.ValueMember = "Nr";
 
                 if (this.listBox1.SelectedValue == null && this.listBox2.SelectedValue == null) this.textBox1.Text = "";
+                if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
+                    this.button1.Text = "Sem Encomendas";
                 
             }
         }
@@ -148,10 +158,7 @@ namespace PreparationService
             }
         }
 
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
+      
 
     }
 }
