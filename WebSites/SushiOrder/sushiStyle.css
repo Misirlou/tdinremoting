@@ -12,26 +12,22 @@
     color:white;
 }
 
-#place, #check {
-
-    padding-top: 20px;
+form,div {
     background-color:#E0E0E0;
 }
-
-table#GridView1{   
-    margin-left:auto; 
-    margin-right:auto;
-  
-}
-
-table#GridView2{   
-    margin-left:auto; 
-    margin-right:auto;
-  
-}
-
 
 label{
     
     clear: left;
+}
+
+th {
+
+    background-color: #0066CC;
+    color:white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
 }

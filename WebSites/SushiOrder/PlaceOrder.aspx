@@ -34,6 +34,7 @@
 <body>
     <h1 id="header">Acme Home Sushi - Encomendar</h1>
     <form id="form2" runat="server">
+        <b>Insira os seguintes dados:</b><br /><br />
         <label>
             Nome Cliente:
             <asp:TextBox ID="tbName" runat="server" /></label><br />
@@ -44,9 +45,8 @@
         <label>
             Morada:
             <asp:TextBox ID="tbAddr" runat="server" /></label><br />
+        <br /><b>Produtos:</b><br />
         <div id="orderitems">
-
-            <br />
             <div id="orderitem1">
 
                 <label>

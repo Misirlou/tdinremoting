@@ -11,10 +11,15 @@ public partial class _Default : System.Web.UI.Page
   IOrders orderObj;
 
   protected void Page_Load(object sender, EventArgs e) {
-    if (!IsPostBack)                                        // first load in a session
-      GridView1.Visible = false;
     string address = ConfigurationManager.AppSettings["RemoteAddress"];
     orderObj = (IOrders) Activator.GetObject(typeof(IOrders), address);
+
+    
+  }
+
+  public override void VerifyRenderingInServerForm(Control control)
+  {
+   
   }
 
   protected void Button1_Click(object sender, EventArgs e)
@@ -22,15 +27,24 @@ public partial class _Default : System.Web.UI.Page
       List<Order> ls;
 
       ls = orderObj.GetOrders(tbnome.Text);
-      GridView1.DataSource = ls;
-      GridView1.DataBind();
-      GridView1.Visible = true;
-      if (ls.Count > 0)
+
+
+      for (int i = 0; i < ls.Count; i++)
       {
-          List<OrderItem> ls2 = ls[0].produtos;
-          GridView2.DataSource = ls2;
-          GridView2.DataBind();
-          GridView2.Visible = true;
+          GridView gv = new GridView();
+          List<Order> tmp = new List<Order>();
+          tmp.Add(ls[i]);
+
+          gv.DataSource = tmp;
+          Page.Controls.Add(gv);
+
+          GridView gv2 = new GridView();
+          gv2.DataSource = ls[i].produtos;
+          Page.Controls.Add(gv2);
       }
+      Page.DataBind();
+
+
+      
   }
 }

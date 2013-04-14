@@ -12,18 +12,14 @@
     <div id="place">
         Disfruta dos nossos serviços e encomenda já:  <a href="PlaceOrder.aspx">Eu quero sushi!</a>
     </div>
-    
+    <br /><br />
     <div id="check">
         Se já encomendaste o teu sushi, verifica o estado da tua encomenda:
         <form id="form1" runat="server">
-          <label>Nome: <asp:TextBox runat="server" id="tbnome">Nome:</asp:TextBox></label>
-          <asp:Button ID="Button1" runat="server" Text="GetOrders" OnClick="Button1_Click" />
+          <label>Nome Cliente: <asp:TextBox runat="server" id="tbnome"></asp:TextBox></label>
+          <asp:Button ID="Button1" runat="server" Text="Procurar" OnClick="Button1_Click" />
           <br />
           <br />
-          <asp:GridView ID="GridView1" runat="server">
-          </asp:GridView>
-            <asp:GridView ID="GridView2" runat="server">
-          </asp:GridView>
           <br />
         </form>
         <br />
