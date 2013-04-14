@@ -31,7 +31,8 @@ namespace DeliveryService
             this.Text = "Delivery Equipa: " + equipa;
             this.label1.Text = "Ready";
             this.label2.Text = "Em entrega";
-            this.button1.Text = "Por em entrega";
+            this.button1.Text = "Sem Encomendas";
+            this.label3.Text = "Info Detalhada:";
 
             UpdateDelivering();
 
@@ -45,6 +46,9 @@ namespace DeliveryService
                 case OrderState.Delivering: UpdateDelivering(); break;
                 case OrderState.Completed: UpdateCompleted(); break;
             }
+
+            if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
+                this.button1.Text = "Sem Encomendas";
 
         }
 

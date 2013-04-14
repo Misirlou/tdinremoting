@@ -31,7 +31,8 @@ namespace PreparationService
 
             this.label1.Text = "Novas Encomendas";
             this.label2.Text = "Em Preparação";
-            this.button1.Text = "Por em preparação";
+            this.button1.Text = "Sem Encomendas";
+            this.label3.Text = "Info Detalhada";
 
             UpdatePreparing();
         }
@@ -45,6 +46,8 @@ namespace PreparationService
                 case OrderState.Ready: UpdateReady(); break;
             }
 
+            if (this.listBox1.Items.Count == 0 && this.listBox2.Items.Count == 0)
+                this.button1.Text = "Sem Encomendas";
         }
 
 
@@ -92,6 +95,7 @@ namespace PreparationService
                 this.listBox2.ValueMember = "Nr";
 
                 if (this.listBox1.SelectedValue == null && this.listBox2.SelectedValue == null) this.textBox1.Text = "";
+                
             }
         }
 
@@ -111,6 +115,7 @@ namespace PreparationService
                 {
                     int num = (int)this.listBox2.SelectedValue;
                     lorders.ModifyOrder(num, OrderState.Ready);
+                    
                 }
 
             }

@@ -103,7 +103,7 @@ public partial class PlaceOrder : System.Web.UI.Page
             
             ord= new Order(tbName.Text, tbCCN.Text, tbAddr.Text,0,items,nrs);
             
-            labelpreco.Text = ord.price.ToString();
+            labelpreco.Text = "<b>Preço final: " + ord.price.ToString() + "€</b>";
             confirmPreco.Visible = true;
         }
     }

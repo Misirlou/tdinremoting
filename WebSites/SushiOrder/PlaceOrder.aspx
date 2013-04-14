@@ -19,6 +19,15 @@
             return false;
         }
 
+        $(document).ready(function(){
+            $("div#orderitems div label input").each(function(){
+
+              if ($(this).val() != "") {
+                    $(this).parent("label").parent("div").show();
+                }
+                    
+            });
+        });
 
     </script>
 </head>
@@ -112,7 +121,7 @@
         <asp:Button ID="Button2" runat="server" Text="Encomendar" OnClick="Button2_Click" />
         <asp:Panel ID="confirmPreco" runat="server"
     Visible="False">
-    <p><asp:Label ID="labelpreco" runat="server"></asp:Label><br />
+    <p><asp:Label ID="labelpreco" runat="server"></asp:Label><br />Confirmar Preço: 
     <asp:Button ID="btSim" runat="server" OnClick="btPreco_Click" Text="Sim" />
     <asp:Button ID="btNao" runat="server" OnClick="btPreco_Click" Text="Não" />
     </p>
