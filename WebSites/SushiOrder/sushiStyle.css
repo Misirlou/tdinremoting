@@ -1,0 +1,33 @@
+﻿body {
+
+    width: 800px;
+    margin:auto;
+}
+
+#header {
+
+    text-align:center;
+    background-color: #0066CC;
+    padding: 15px;
+    color:white;
+}
+
+form,div {
+    background-color:#E0E0E0;
+}
+
+label{
+    
+    clear: left;
+}
+
+th {
+
+    background-color: #0066CC;
+    color:white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
